@@ -7,6 +7,9 @@ __pycache__/
 frontend/node_modules/
 frontend/dist/
 
+# Survey responses — student answers stay on the machine that collected them
+data/survey_responses.csv
+
 # Secrets — never commit these
 .env
 *.env

@@ -1,9 +1,11 @@
 """GroupMaker v0 — backend.
 
-Serves the roster, randomizes groups, and (in production) serves the
-built frontend from frontend/dist.
+Serves the roster, randomizes groups, collects survey responses, and (in
+production) serves the built frontend from frontend/dist.
 """
 
+import csv
+import datetime
 import json
 import os
 import random
@@ -11,7 +13,10 @@ import random
 from flask import Flask, jsonify, request, send_from_directory
 
 DIST_DIR = os.path.join(os.path.dirname(__file__), "frontend", "dist")
-DATA_FILE = os.path.join(os.path.dirname(__file__), "data", "roster.json")
+DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+DATA_FILE = os.path.join(DATA_DIR, "roster.json")
+SCHEMA_FILE = os.path.join(DATA_DIR, "survey_schema.json")
+RESPONSES_FILE = os.path.join(DATA_DIR, "survey_responses.csv")
 
 app = Flask(__name__, static_folder=None)
 
@@ -44,6 +49,85 @@ def randomize_groups():
             groups[i % len(groups)].append(student)
 
     return jsonify({"groups": [{"number": i + 1, "members": g} for i, g in enumerate(groups)]})
+
+
+# ---- Survey ------------------------------------------------------------------
+# The questions live in data/survey_schema.json. The form renders whatever is in
+# there and the CSV header comes from the same list, so adding or reordering a
+# question means editing that file only.
+
+
+def load_schema():
+    with open(SCHEMA_FILE, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def survey_fields():
+    """Schema fields, with roster-backed dropdowns filled in from the roster."""
+    schema = load_schema()
+    names = [s["name"] for s in load_roster()["students"]]
+    for field in schema["fields"]:
+        if field.get("source") == "roster":
+            field["values"] = names
+    return schema
+
+
+def clean_answer(field, value):
+    """Return (csv_value, problem) for one answer. problem is None when valid."""
+    optional = field.get("optional", False)
+    allowed = [str(v) for v in field.get("values", [])]
+
+    if field["type"] == "multiselect":
+        chosen = [str(v) for v in (value or []) if str(v).strip()]
+        if not chosen:
+            return "", None if optional else "missing"
+        if any(v not in allowed for v in chosen):
+            return "", "invalid"
+        return "; ".join(chosen), None
+
+    text = "" if value is None else str(value).strip()
+    if not text:
+        return "", None if optional else "missing"
+    if field["type"] in ("dropdown", "scale") and text not in allowed:
+        return "", "invalid"
+    return text, None
+
+
+@app.get("/api/survey/schema")
+def get_survey_schema():
+    return jsonify(survey_fields())
+
+
+@app.post("/api/survey")
+def submit_survey():
+    body = request.get_json(silent=True) or {}
+    answers = body.get("answers") or {}
+    fields = survey_fields()["fields"]
+
+    row, missing, invalid = {}, [], []
+    for field in fields:
+        value, problem = clean_answer(field, answers.get(field["column"]))
+        row[field["column"]] = value
+        if problem == "missing":
+            missing.append(field["column"])
+        elif problem == "invalid":
+            invalid.append(field["column"])
+
+    if missing or invalid:
+        return jsonify({"error": "Some answers need fixing.", "missing": missing, "invalid": invalid}), 400
+
+    row["submitted_at"] = datetime.datetime.now().astimezone().isoformat(timespec="seconds")
+    columns = [f["column"] for f in fields] + ["submitted_at"]
+
+    # newline="" keeps the csv module from writing blank lines between rows on Windows.
+    needs_header = not os.path.exists(RESPONSES_FILE) or os.path.getsize(RESPONSES_FILE) == 0
+    with open(RESPONSES_FILE, "a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=columns)
+        if needs_header:
+            writer.writeheader()
+        writer.writerow(row)
+
+    return jsonify({"ok": True, "submitted_at": row["submitted_at"]})
 
 
 # ---- Serve the built frontend (production) ----------------------------------

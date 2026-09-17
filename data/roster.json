@@ -1,41 +1,141 @@
 {
   "course": "TECH-UB 24 — Projects in Programming & Data Science, Fall 2026",
-  "_instructor_note": "REPLACE the students list below with the real class roster (names only) before Class 1. Keep the JSON shape identical.",
   "students": [
-    {"id": 1, "name": "REPLACE Student 01"},
-    {"id": 2, "name": "REPLACE Student 02"},
-    {"id": 3, "name": "REPLACE Student 03"},
-    {"id": 4, "name": "REPLACE Student 04"},
-    {"id": 5, "name": "REPLACE Student 05"},
-    {"id": 6, "name": "REPLACE Student 06"},
-    {"id": 7, "name": "REPLACE Student 07"},
-    {"id": 8, "name": "REPLACE Student 08"},
-    {"id": 9, "name": "REPLACE Student 09"},
-    {"id": 10, "name": "REPLACE Student 10"},
-    {"id": 11, "name": "REPLACE Student 11"},
-    {"id": 12, "name": "REPLACE Student 12"},
-    {"id": 13, "name": "REPLACE Student 13"},
-    {"id": 14, "name": "REPLACE Student 14"},
-    {"id": 15, "name": "REPLACE Student 15"},
-    {"id": 16, "name": "REPLACE Student 16"},
-    {"id": 17, "name": "REPLACE Student 17"},
-    {"id": 18, "name": "REPLACE Student 18"},
-    {"id": 19, "name": "REPLACE Student 19"},
-    {"id": 20, "name": "REPLACE Student 20"},
-    {"id": 21, "name": "REPLACE Student 21"},
-    {"id": 22, "name": "REPLACE Student 22"},
-    {"id": 23, "name": "REPLACE Student 23"},
-    {"id": 24, "name": "REPLACE Student 24"},
-    {"id": 25, "name": "REPLACE Student 25"},
-    {"id": 26, "name": "REPLACE Student 26"},
-    {"id": 27, "name": "REPLACE Student 27"},
-    {"id": 28, "name": "REPLACE Student 28"},
-    {"id": 29, "name": "REPLACE Student 29"},
-    {"id": 30, "name": "REPLACE Student 30"},
-    {"id": 31, "name": "REPLACE Student 31"},
-    {"id": 32, "name": "REPLACE Student 32"},
-    {"id": 33, "name": "REPLACE Student 33"},
-    {"id": 34, "name": "REPLACE Student 34"},
-    {"id": 35, "name": "REPLACE Student 35"}
+    {
+      "id": 1,
+      "name": "Rania Aamer"
+    },
+    {
+      "id": 2,
+      "name": "Eddie Aram"
+    },
+    {
+      "id": 3,
+      "name": "Natalie Chen"
+    },
+    {
+      "id": 4,
+      "name": "Maxson Cook"
+    },
+    {
+      "id": 5,
+      "name": "Adriana Escobedo"
+    },
+    {
+      "id": 6,
+      "name": "Xiangyue Fan"
+    },
+    {
+      "id": 7,
+      "name": "Elena Feng"
+    },
+    {
+      "id": 8,
+      "name": "Roxane Framroze"
+    },
+    {
+      "id": 9,
+      "name": "Dev Ganguli"
+    },
+    {
+      "id": 10,
+      "name": "Simon Gu"
+    },
+    {
+      "id": 11,
+      "name": "Muhammad Hamza"
+    },
+    {
+      "id": 12,
+      "name": "Karen Han"
+    },
+    {
+      "id": 13,
+      "name": "Edward Huang"
+    },
+    {
+      "id": 14,
+      "name": "Avirul Islam"
+    },
+    {
+      "id": 15,
+      "name": "Hendry Jimenez Tejeda"
+    },
+    {
+      "id": 16,
+      "name": "Hajin Jung"
+    },
+    {
+      "id": 17,
+      "name": "Sheharyar Khan"
+    },
+    {
+      "id": 18,
+      "name": "Solomon Kim"
+    },
+    {
+      "id": 19,
+      "name": "Walter Kusuma"
+    },
+    {
+      "id": 20,
+      "name": "Nicholas Lane"
+    },
+    {
+      "id": 21,
+      "name": "Mohamed Mahmoud"
+    },
+    {
+      "id": 22,
+      "name": "Yulong Ou"
+    },
+    {
+      "id": 23,
+      "name": "Jin Michael Qian"
+    },
+    {
+      "id": 24,
+      "name": "Myra Rafiq"
+    },
+    {
+      "id": 25,
+      "name": "Olivia Rong"
+    },
+    {
+      "id": 26,
+      "name": "Adi Sadana"
+    },
+    {
+      "id": 27,
+      "name": "Kashish Satija"
+    },
+    {
+      "id": 28,
+      "name": "Ali Shehadi"
+    },
+    {
+      "id": 29,
+      "name": "Arjun Srinivasan"
+    },
+    {
+      "id": 30,
+      "name": "Arav Vaghani"
+    },
+    {
+      "id": 31,
+      "name": "Alex Xu"
+    },
+    {
+      "id": 32,
+      "name": "Kalem Xu"
+    },
+    {
+      "id": 33,
+      "name": "Kelly Yang"
+    },
+    {
+      "id": 34,
+      "name": "Allan You"
+    }
   ]
 }

@@ -1,0 +1,103 @@
+{
+  "title": "Group formation survey",
+  "intro": "Answers help build balanced project teams. One submission per person.",
+  "fields": [
+    {
+      "column": "name",
+      "question": "What is your name?",
+      "type": "dropdown",
+      "source": "roster",
+      "values": [],
+      "optional": false
+    },
+    {
+      "column": "school_year",
+      "question": "What year are you?",
+      "type": "dropdown",
+      "values": ["First-year", "Sophomore", "Junior", "Senior", "Other"],
+      "optional": false
+    },
+    {
+      "column": "major",
+      "question": "What are you studying?",
+      "type": "text",
+      "placeholder": "e.g. Business & Technology",
+      "optional": false
+    },
+    {
+      "column": "programming_experience",
+      "question": "How much programming experience do you have?",
+      "type": "scale",
+      "values": ["1", "2", "3", "4", "5"],
+      "low_label": "Brand new",
+      "high_label": "Very experienced",
+      "optional": false
+    },
+    {
+      "column": "data_experience",
+      "question": "How comfortable are you working with data?",
+      "type": "scale",
+      "values": ["1", "2", "3", "4", "5"],
+      "low_label": "Not at all",
+      "high_label": "Very comfortable",
+      "optional": false
+    },
+    {
+      "column": "preferred_role",
+      "question": "Which role would you most like to take on?",
+      "type": "dropdown",
+      "values": [
+        "Project manager",
+        "Frontend",
+        "Backend",
+        "Data / analysis",
+        "Design",
+        "No preference"
+      ],
+      "optional": false
+    },
+    {
+      "column": "strengths",
+      "question": "What do you bring to a team? Pick everything that applies.",
+      "type": "multiselect",
+      "values": [
+        "Writing code",
+        "Debugging",
+        "Data analysis",
+        "Design / UI",
+        "Writing & documentation",
+        "Presenting",
+        "Organizing the team"
+      ],
+      "optional": false
+    },
+    {
+      "column": "availability",
+      "question": "When can you meet outside class? Pick everything that applies.",
+      "type": "multiselect",
+      "values": [
+        "Weekday mornings",
+        "Weekday afternoons",
+        "Weekday evenings",
+        "Weekends"
+      ],
+      "optional": false
+    },
+    {
+      "column": "working_style",
+      "question": "Describe your working style in 1-2 sentences.",
+      "type": "text",
+      "multiline": true,
+      "placeholder": "How do you like to plan, split up work, and communicate?",
+      "optional": false
+    },
+    {
+      "column": "anything_else",
+      "question": "Anything else we should know?",
+      "type": "text",
+      "multiline": true,
+      "placeholder": "Optional",
+      "optional": true
+    }
+  ]
+}
