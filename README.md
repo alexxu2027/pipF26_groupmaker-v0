@@ -39,3 +39,5 @@ Dockerfile          a packaged set of code that Railway knows what to do with (u
 ## Instructor note
 
 Replace `data/roster.json` with the real class roster (names only) before Class 1.
+
+Alex Xu 9/17/26
